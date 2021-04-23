@@ -83,13 +83,10 @@ signinBtn.addEventListener("click", function () {
   if (isUser()) {
     localStorage.setItem("currentUser", JSON.stringify(userInfo));
     console.log(location);
-    if (location.hostname) {
-      location.pathname = "user-page.html";
-    } else {
-      var path = location.pathname.split("/");
-      path[path.length - 1] = "user-page.html";
-      location.pathname = path.join("/");
-    }
+    location.pathname = "user-page.html";
+    var path = location.href.split("/");
+    path[path.length - 1] = "user-page.html";
+    location.href = path.join("/");
 
     console.log(location.href);
   } else {
