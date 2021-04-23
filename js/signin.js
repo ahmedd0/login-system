@@ -40,13 +40,9 @@ if (localStorage.getItem("currentUser")) {
       localStorage.removeItem("currentUser");
     }
 
-    if (location.hostname) {
-      location.pathname = "index.html";
-    } else {
-      var path = location.pathname.split("/");
-      path[path.length - 1] = "index.html";
-      location.pathname = path.join("/");
-    }
+    var path = location.href.split("/");
+    path[path.length - 1] = "index.html";
+    location.href = path.join("/");
   });
 } else {
   document.getElementById("form").classList.remove("d-none");

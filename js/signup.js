@@ -18,11 +18,9 @@ function signUp() {
     users.push(userInfo);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Done");
-    if (location.hostname) {
-      var path = location.href.split("/");
-      path[path.length - 1] = "index.html";
-      location.href = path.join("/");
-    }
+    var path = location.href.split("/");
+    path[path.length - 1] = "index.html";
+    location.href = path.join("/");
   }
 }
 //-----------------------------------------------------------------
