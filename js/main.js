@@ -1,7 +1,7 @@
 //------------------if userd already login show the user page------------
 if (localStorage.getItem("currentUser")) {
-    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    document.body.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light main-bg fixed-top">
+  var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  document.body.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light main-bg fixed-top">
     <div class="container">
         <a class="navbar-brand text-white" href="index.html">SMART LOGIN
         </a>
@@ -28,22 +28,21 @@ if (localStorage.getItem("currentUser")) {
   
     </div>
   </div>`;
-    signout = document.getElementById("signout");
-    logoutBtn.addEventListener("click", function () {
-      if (localStorage.getItem("currentUser")) {
-        localStorage.removeItem("currentUser");
-      }
-  
-      if (location.hostname) {
-        location.pathname = "index.html";
-      } else {
-        var path = location.pathname.split("/");
-        path[path.length - 1] = "index.html";
-        location.pathname = path.join("/");
-      }
-    });
-  } else {
-    document.getElementById("form").classList.remove("d-none");
-  }
-  //-------------------------------------------------------------------
-  
+  signout = document.getElementById("signout");
+  logoutBtn.addEventListener("click", function () {
+    if (localStorage.getItem("currentUser")) {
+      localStorage.removeItem("currentUser");
+    }
+
+    if (location.hostname) {
+      location.href = "index.html";
+    } else {
+      var path = location.href.split("/");
+      path[path.length - 1] = "index.html";
+      location.href = path.join("/");
+    }
+  });
+} else {
+  document.getElementById("form").classList.remove("d-none");
+}
+//-------------------------------------------------------------------

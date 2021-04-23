@@ -5,11 +5,9 @@ logoutBtn.addEventListener("click", function () {
     localStorage.removeItem("currentUser");
   }
   if (location.hostname) {
-    location.pathname = "index.html";
-  } else {
-    var path = location.pathname.split("/");
+    var path = location.href.split("/");
     path[path.length - 1] = "index.html";
-    location.pathname = path.join("/");
+    location.href = path.join("/");
   }
 });
 
