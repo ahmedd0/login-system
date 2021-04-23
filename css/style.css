@@ -1,0 +1,27 @@
+.main-bg {
+    background-color: #24353f;
+}
+
+.main-color {
+    color: #17a2b8;
+}
+
+body {
+    height: 100vh;
+}
+
+.form {
+    box-shadow: 0px 0px 35px black;
+    width: 60% !important;
+}
+
+.form input,
+button {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.box,
+.navbar {
+    box-shadow: 0px 0px 35px black;
+}
