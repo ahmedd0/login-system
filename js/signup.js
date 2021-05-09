@@ -38,7 +38,7 @@ function signUp() {
       validation.hideValidationEffect(userEmailInput, emailAlert);
       validation.hideValidationEffect(userPasswordInput, passwordAlert);
       isValid();
-      alert("SignedUp Successfully");
+      alert("signed up successfully");
     } else {
       signupBtn.setAttribute("disabled", "true");
       alert("sorry data is invalid");
