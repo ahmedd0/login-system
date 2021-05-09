@@ -1,4 +1,8 @@
 var logoutBtn = document.getElementById("logoutBtn");
+//---------------------------------------------------------------
+
+import { isUserLoggedIn } from "./main.js";
+isUserLoggedIn();
 
 logoutBtn.addEventListener("click", function () {
   if (localStorage.getItem("currentUser")) {

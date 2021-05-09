@@ -22,17 +22,27 @@
             <div class="form-group">
                 <input id="userName" class="form-control" name="userName" type="text" placeholder="Enter Your Name"
                     autocomplete="off">
+                <div class="alert alert-danger mt-1 py-1 d-none" id="userNameAlert" role="alert">username should be
+                    Start with capital letter {4 or more char}
+                </div>
             </div>
             <div class="form-group">
                 <input id="userEmail" class="form-control" type="email" name="userEmail" placeholder="Enter Your Email"
                     autocomplete="off">
+                <div class="alert alert-danger mt-1 py-1 d-none" id="emailAlert" role="alert">SORRY, THIS FIELD SHOULD
+                    BE AN EMAIL
+                </div>
+
             </div>
             <div class="form-group">
                 <input id="userPassword" class="form-control" type="password" name="userPassword"
                     placeholder="Enter password">
+                <div class="alert alert-danger mt-1 py-1 d-none text-lowercase" id="passwordAlert" role="alert">SORRY,
+                    password must be 4 , 12 char
+                </div>
             </div>
             <div class="form-group">
-                <button id="signupBtn" class="btn btn-outline-info form-control">Sign Up</button>
+                <button id="signupBtn" class="btn btn-outline-info form-control" disabled>Sign Up</button>
             </div>
             <p class="text-center text-white">Don’t have an account? <a href="index.html">Signin</a></p>
 
@@ -41,9 +51,8 @@
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
 
-    <script src="js/signup.js"></script>
+    <script src="js/signup.js" type="module"></script>
 </body>
 
 

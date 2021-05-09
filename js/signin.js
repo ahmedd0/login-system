@@ -1,52 +1,18 @@
 var emailInput = document.getElementById("email");
 var passwordInput = document.getElementById("password");
-var signinBtn = document.getElementById("signinBtn");
-var signout;
+let emailAlert = document.getElementById("emailAlert");
+let passwordAlert = document.getElementById("passwordAlert");
+let emailRegex = /^[a-zA-Z\.]{3,}@[A-Za-z0-9]{2,}\.[a-zA-Z0-9]{2,}$/m;
+let passwordRegex = /^[A-Za-z0-9]{4,12}$/;
+
 var users;
 var userInfo;
-//------------------if userd already login show the user page------------
-if (localStorage.getItem("currentUser")) {
-  var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  document.body.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light main-bg fixed-top">
-  <div class="container">
-      <a class="navbar-brand text-white" href="index.html">SMART LOGIN
-      </a>
-      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-          data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="list-unstyled ml-auto mb-0">
-              <li class="nav-item">
-                  <button id="logoutBtn" class="btn btn-outline-warning">logout</button>
-              </li>
+var signinBtn = document.getElementById("signinBtn");
+//---------------------------------------------------------------
 
-          </ul>
-
-      </div>
-  </div>
-
-</nav>
-<div class="h-100 d-flex justify-content-center align-items-center">
-  <div class="mt-5 w-50 text-center p-5 box main-color">
-      <h1 id="username" class="username">Welcome ${currentUser.name}</h1>
-
-  </div>
-</div>`;
-  signout = document.getElementById("signout");
-  logoutBtn.addEventListener("click", function () {
-    if (localStorage.getItem("currentUser")) {
-      localStorage.removeItem("currentUser");
-    }
-
-    var path = location.href.split("/");
-    path[path.length - 1] = "index.html";
-    location.href = path.join("/");
-  });
-} else {
-  document.getElementById("form").classList.remove("d-none");
-}
+import { isUserLoggedIn } from "./main.js";
+import validation from "./validation.js";
+isUserLoggedIn();
 //------------------------------------------------------------------------------------
 //------------------- Get All User If They Exist in localStorage
 if (localStorage.getItem("users") == null) {
@@ -79,7 +45,7 @@ function isUser() {
   return a;
 }
 //------------------------------------------------------------------------------
-signinBtn.addEventListener("click", function () {
+function signIn() {
   if (isUser()) {
     localStorage.setItem("currentUser", JSON.stringify(userInfo));
     console.log(location);
@@ -92,4 +58,28 @@ signinBtn.addEventListener("click", function () {
   } else {
     alert("not Exist");
   }
+}
+//--------------------------------------------------------------------------------
+function isValid() {
+  if (
+    emailInput &&
+    passwordInput &&
+    emailRegex.test(emailInput.value) &&
+    passwordRegex.test(passwordInput.value)
+  ) {
+    signinBtn.removeAttribute("disabled");
+    return true;
+  } else {
+    signinBtn.setAttribute("disabled", "true");
+    return false;
+  }
+}
+signinBtn.addEventListener("click", signIn);
+emailInput.addEventListener("keyup", () => {
+  validation.validate(emailInput, emailRegex, emailAlert);
+  isValid();
+});
+passwordInput.addEventListener("keyup", () => {
+  validation.validate(passwordInput, passwordRegex, passwordAlert);
+  isValid();
 });

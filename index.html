@@ -20,13 +20,20 @@
     <div class="form bg-main d-none p-5" id="form">
       <h1 class="text-center main-color mb-4">Smart Login System</h1>
       <div class="form-group">
-        <input id="email" class="form-control" type="email" placeholder="Enter Your email" autocomplete="off">
+        <input id="email" class="form-control " type="email" placeholder="Enter Your email" autocomplete="off">
+        <div class="alert alert-danger mt-1 py-1 d-none" id="emailAlert" role="alert">SORRY, THIS FIELD SHOULD BE AN
+          EMAIL
+        </div>
       </div>
       <div class="form-group">
         <input id="password" class="form-control" type="password" placeholder="Enter Your password" autocomplete="off">
+        <div class="alert alert-danger mt-1 py-1 d-none" id="passwordAlert" role="alert">SORRY, PASSWORD SHOULD BE MORE
+          THAN 4 CHARACTAER
+        </div>
+
       </div>
       <div class="form-group">
-        <button id="signinBtn" class="btn btn-outline-info form-control">Login</button>
+        <button id="signinBtn" class="btn btn-outline-info form-control" disabled>Login</button>
       </div>
       <p class="text-center text-white">Don’t have an account? <a href="signup.html">Sign Up</a></p>
 
@@ -35,8 +42,7 @@
   <script src="js/jquery-3.5.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/signin.js"></script>
+  <script src="js/signin.js" type="module"></script>
 
 </body>
 
